@@ -1,0 +1,53 @@
+<section class="search">
+  <div class="container">
+    <div class="form-control">
+      <div class="icon">
+        <i class="fas fa-search fa-md"></i>
+      </div>
+      <input
+        type="text"
+        class="search-text"
+        placeholder="Search for a country..."
+        (keyup)="changeName($event)"
+      />
+    </div>
+    <div class="select-options">
+      <div id="select" (click)="toggleDropdown()">Filter by region...</div>
+      <div class="options" [ngClass]="{ 'options-show': dropdownOpen == true }">
+        <li class="item" (click)="changeRegion('Africa')">Africa</li>
+        <li class="item" (click)="changeRegion('Americas')">America</li>
+        <li class="item" (click)="changeRegion('Asia')">Asia</li>
+        <li class="item" (click)="changeRegion('Europe')">Europe</li>
+        <li class="item" (click)="changeRegion('Oceania')">Oceania</li>
+      </div>
+      <span class="icon" [ngClass]="{ 'icon-reverse': dropdownOpen == true }"
+        ><i class="fas fa-chevron-down"></i
+      ></span>
+    </div>
+  </div>
+</section>
+
+<!-- Countries -->
+<section class="countries">
+  <div class="container">
+    <div *ngFor="let country of countries$ | async" class="card">
+      <div class="flag">
+        <img [src]="country.flag" alt="" />
+      </div>
+      <div class="content">
+        <h3 class="name" [routerLink]="['/', 'detail', country.name]">
+          {{ country.name }}
+        </h3>
+        <p>
+          Population: <span class="light">{{ country.population }}</span>
+        </p>
+        <p>
+          Region: <span class="light">{{ country.region }}</span>
+        </p>
+        <p>
+          Capital: <span class="light">{{ country.capital }}</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

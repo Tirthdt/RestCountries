@@ -1,0 +1,10 @@
+<nav class="navbar">
+  <div class="container">
+    <h3 class="logo">Where in the world?</h3>
+    <button (click)="changeTheme()" class="btn">
+      <i *ngIf="!darkmode" class="far fa-moon"></i>
+      <i *ngIf="darkmode" class="fas fa-moon"></i>
+      Dark Mode
+    </button>
+  </div>
+</nav>
